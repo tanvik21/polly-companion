@@ -14,7 +14,250 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      avatars: {
+        Row: {
+          avatar_url: string
+          created_at: string | null
+          id: string
+          selfie_description: string | null
+          session_id: string
+          user_id: string | null
+        }
+        Insert: {
+          avatar_url: string
+          created_at?: string | null
+          id?: string
+          selfie_description?: string | null
+          session_id: string
+          user_id?: string | null
+        }
+        Update: {
+          avatar_url?: string
+          created_at?: string | null
+          id?: string
+          selfie_description?: string | null
+          session_id?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      content_cards: {
+        Row: {
+          active: boolean | null
+          body: string
+          clinician_reviewed: boolean | null
+          clinician_signed_by: string | null
+          created_at: string | null
+          id: string
+          short_summary: string | null
+          tags: string[] | null
+          title: string
+          topic: string
+          updated_at: string | null
+        }
+        Insert: {
+          active?: boolean | null
+          body: string
+          clinician_reviewed?: boolean | null
+          clinician_signed_by?: string | null
+          created_at?: string | null
+          id?: string
+          short_summary?: string | null
+          tags?: string[] | null
+          title: string
+          topic: string
+          updated_at?: string | null
+        }
+        Update: {
+          active?: boolean | null
+          body?: string
+          clinician_reviewed?: boolean | null
+          clinician_signed_by?: string | null
+          created_at?: string | null
+          id?: string
+          short_summary?: string | null
+          tags?: string[] | null
+          title?: string
+          topic?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      conversations: {
+        Row: {
+          created_at: string | null
+          id: string
+          is_anonymous: boolean | null
+          session_id: string
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          is_anonymous?: boolean | null
+          session_id: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          is_anonymous?: boolean | null
+          session_id?: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      messages: {
+        Row: {
+          content: string
+          conversation_id: string
+          created_at: string | null
+          emotion: string | null
+          id: string
+          intent: string | null
+          risk_score: number | null
+          role: string
+        }
+        Insert: {
+          content: string
+          conversation_id: string
+          created_at?: string | null
+          emotion?: string | null
+          id?: string
+          intent?: string | null
+          risk_score?: number | null
+          role: string
+        }
+        Update: {
+          content?: string
+          conversation_id?: string
+          created_at?: string | null
+          emotion?: string | null
+          id?: string
+          intent?: string | null
+          risk_score?: number | null
+          role?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messages_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      mood_tracking: {
+        Row: {
+          created_at: string | null
+          id: string
+          mood: string
+          notes: string | null
+          session_id: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          mood: string
+          notes?: string | null
+          session_id: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          mood?: string
+          notes?: string | null
+          session_id?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_style: string | null
+          created_at: string | null
+          display_name: string | null
+          id: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          avatar_style?: string | null
+          created_at?: string | null
+          display_name?: string | null
+          id?: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          avatar_style?: string | null
+          created_at?: string | null
+          display_name?: string | null
+          id?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      triage_tickets: {
+        Row: {
+          anonymized_transcript: Json | null
+          clinician_notes: string | null
+          conversation_id: string
+          created_at: string | null
+          id: string
+          red_flags: string[] | null
+          resolved: boolean | null
+          resolved_at: string | null
+          resolved_by: string | null
+          risk_level: string
+          risk_score: number | null
+          session_hash: string
+        }
+        Insert: {
+          anonymized_transcript?: Json | null
+          clinician_notes?: string | null
+          conversation_id: string
+          created_at?: string | null
+          id?: string
+          red_flags?: string[] | null
+          resolved?: boolean | null
+          resolved_at?: string | null
+          resolved_by?: string | null
+          risk_level: string
+          risk_score?: number | null
+          session_hash: string
+        }
+        Update: {
+          anonymized_transcript?: Json | null
+          clinician_notes?: string | null
+          conversation_id?: string
+          created_at?: string | null
+          id?: string
+          red_flags?: string[] | null
+          resolved?: boolean | null
+          resolved_at?: string | null
+          resolved_by?: string | null
+          risk_level?: string
+          risk_score?: number | null
+          session_hash?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "triage_tickets_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
