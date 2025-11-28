@@ -1,1 +1,7 @@
 project_id = "mugzwrjlnxqpigvyutsb"
+
+[functions.chat]
+verify_jwt = false
+
+[functions.generate-avatar]
+verify_jwt = false

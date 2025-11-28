@@ -23,7 +23,7 @@ const Index = () => {
             </p>
             <Button
               size="lg"
-              onClick={() => navigate("/chat")}
+              onClick={() => navigate("/onboarding")}
               className="rounded-full px-8 py-6 text-lg bg-gradient-to-r from-primary to-warm-glow hover:opacity-90 transition-all duration-300 hover:scale-105 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-200"
             >
               <MessageCircle className="w-5 h-5 mr-2" />
@@ -89,7 +89,7 @@ const Index = () => {
               >
                 <HealthCard
                   topic={topic}
-                  onClick={() => navigate("/chat")}
+                  onClick={() => navigate("/onboarding")}
                 />
               </div>
             ))}
@@ -109,7 +109,7 @@ const Index = () => {
           </p>
           <Button
             size="lg"
-            onClick={() => navigate("/chat")}
+            onClick={() => navigate("/onboarding")}
             className="rounded-full px-8 py-6 text-lg bg-gradient-to-r from-primary to-warm-glow hover:opacity-90 transition-all duration-300 hover:scale-105"
           >
             <MessageCircle className="w-5 h-5 mr-2" />
